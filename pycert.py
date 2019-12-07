@@ -20,5 +20,23 @@ issued_to = subject['commonName']
 issuer = dict(x[0] for x in cert['issuer'])
 issued_by = issuer['commonName']
 
-print('Issued to: %s' % issued_to)
-print('Issued by: %s' % issued_by)
+print("""
+/**************************************/
+/*    github.com/mikerodham/pycert    */
+/**************************************/
+
+SUBJECT: %s
+Issued to: %s
+Valid From: %s
+Valid Until: %s
+
+ISSUER: %s
+"""
+% (
+    host,
+    issued_to,
+    cert['notBefore'],
+    cert['notAfter'],
+    issued_by
+  )
+)
